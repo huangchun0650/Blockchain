@@ -1,11 +1,11 @@
-import './App.css';
 import { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import { CONTACT_ABI, CONTACT_ADDRESS } from './config';
 
 function ContractData() {
 	// state variable to set account.
-    const [contactList, setContactList, setAccount] = useState();
+	const [account, setAccount] = useState();
+	const [contactList, setContactList] = useState();
 	const [contacts, setContacts] = useState([]);
 
 	useEffect(() => {
@@ -34,19 +34,19 @@ function ContractData() {
 
 	return (
 		<div>
-            <p>Your account is: {CONTACT_ADDRESS}</p>
-            <h1>Contacts</h1>
-            <ul>
-                {
-                    Object.keys(contacts).map((contact, index) => (
-                        <li key={`${contacts[index].name}-${index}`}>
-                            <h4>{contacts[index].name}</h4>
-                            <span><b>Phone: </b>{contacts[index].phone}</span>
-                        </li>
-                    ))
-                }
-            </ul>
-        </div>
+			Your account is: {account}
+			<h1>Contacts</h1>
+			<ul>
+				{
+					Object.keys(contacts).map((contact, index) => (
+						<li key={`${contacts[index].name}-${index}`}>
+							<h4>{contacts[index].name}</h4>
+							<span><b>Phone: </b>{contacts[index].phone}</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
 	)
 }
 
